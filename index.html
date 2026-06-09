@@ -116,16 +116,16 @@
             100% { box-shadow: 0 0 0 0 rgba(196, 122, 112, 0); }
         }
 
-        /* 工作坊照片輪播 */
-        .gallery-track {
+        /* 橫向輪播（故事、照片共用） */
+        .carousel-track {
             display: flex;
             transition: transform 0.5s ease-out;
         }
-        .gallery-slide {
+        .carousel-slide {
             min-width: 100%;
             flex-shrink: 0;
         }
-        .gallery-dot.active {
+        .carousel-dot.active {
             background-color: #5c7a65;
             width: 1.25rem;
         }
@@ -232,56 +232,72 @@
                 <div class="w-12 h-1 bg-rosewood-200 mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <div class="max-w-3xl mx-auto relative">
-                <div class="absolute left-4 sm:left-5 top-4 bottom-4 w-px bg-gradient-to-b from-rosewood-200 via-sage-200 to-sage-400 hidden sm:block"></div>
+            <p class="text-center text-xs text-sand-800 mb-5 flex items-center justify-center gap-1.5">
+                <span>向右滑，繼續閱讀</span>
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-sage-600"></i>
+                <span id="story-counter" class="text-sage-700 font-semibold ml-1">1 / 5</span>
+            </p>
 
-                <div class="space-y-5 sm:space-y-6">
-                    <div class="relative flex gap-4 sm:gap-6 items-start">
-                        <span class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full bg-rosewood-100 text-rosewood-700 text-sm font-bold flex items-center justify-center shadow-sm z-10">1</span>
-                        <div class="flex-1 bg-sand-50 border border-sand-100 rounded-2xl p-5 sm:p-6 shadow-sm">
-                            <p class="text-base sm:text-lg text-sand-900 leading-[1.85]">
-                                你可能做過不少心理測驗。填完、看結果，點點頭——然後發現，好像也沒有比較懂自己。MBTI 這次是一種，過一陣子再測又變了，你開始想：這些標籤，到底可不可以信？
-                            </p>
+            <div class="max-w-3xl mx-auto relative rounded-3xl overflow-hidden border border-sand-200 shadow-md bg-white">
+                <div id="story-viewport" class="overflow-hidden">
+                    <div id="story-track" class="carousel-track items-start">
+                        <div class="carousel-slide px-6 sm:px-10 py-8 sm:py-10">
+                            <div class="w-full bg-sand-50 border border-sand-100 rounded-2xl p-6 sm:p-8 shadow-sm space-y-5">
+                                <p class="text-base sm:text-lg text-sand-900 leading-[1.9]">
+                                    你可能做過不少心理測驗。填完、看結果，點點頭——然後發現，好像也沒有比較懂自己。
+                                </p>
+                                <p class="text-base sm:text-lg text-sand-900 leading-[1.9]">
+                                    MBTI 這次是一種，過一陣子再測又變了，你開始想：這些標籤，到底可不可以信？
+                                </p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="relative flex gap-4 sm:gap-6 items-start">
-                        <span class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full bg-rosewood-100 text-rosewood-700 text-sm font-bold flex items-center justify-center shadow-sm z-10">2</span>
-                        <div class="flex-1 bg-white border border-sand-200 rounded-2xl p-5 sm:p-6 shadow-sm">
-                            <p class="text-base sm:text-lg text-sand-900 leading-[1.85]">
-                                但想認識自己的心情一直在。你只是希望，能不能有一個比較有根據的方式，而不是每次都像在猜。
-                            </p>
+                        <div class="carousel-slide px-6 sm:px-10 py-8 sm:py-10">
+                            <div class="w-full bg-white border border-sand-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+                                <p class="text-base sm:text-lg text-sand-900 leading-[1.9]">
+                                    但想認識自己的心情一直在。你只是希望，能不能有一個比較有根據的方式，而不是每次都像在猜。
+                                </p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="relative flex gap-4 sm:gap-6 items-start">
-                        <span class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full bg-sage-100 text-sage-700 text-sm font-bold flex items-center justify-center shadow-sm z-10">3</span>
-                        <div class="flex-1 bg-sand-50 border border-sand-100 rounded-2xl p-5 sm:p-6 shadow-sm">
-                            <p class="text-base sm:text-lg text-sand-900 leading-[1.85]">
-                                這個工作坊從興趣開始。不是要你填一份嚴肅的問卷，而是快快樂樂回想你喜歡做的事，說出來就好。我們準備了七十多種興趣，有些你可能從沒想過要寫上去——寫下去之後才發現，原來這也算。
-                            </p>
+                        <div class="carousel-slide px-6 sm:px-10 py-8 sm:py-10">
+                            <div class="w-full bg-sand-50 border border-sand-100 rounded-2xl p-6 sm:p-8 shadow-sm space-y-5">
+                                <p class="text-base sm:text-lg text-sand-900 leading-[1.9]">
+                                    這個工作坊從興趣開始。不是要你填一份嚴肅的問卷，而是快快樂樂回想你喜歡做的事，說出來就好。
+                                </p>
+                                <p class="text-base sm:text-lg text-sand-900 leading-[1.9]">
+                                    我們準備了七十多種興趣，有些你可能從沒想過要寫上去——寫下去之後才發現，原來這也算。
+                                </p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="relative flex gap-4 sm:gap-6 items-start">
-                        <span class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full bg-sage-100 text-sage-700 text-sm font-bold flex items-center justify-center shadow-sm z-10">4</span>
-                        <div class="flex-1 bg-white border border-sand-200 rounded-2xl p-5 sm:p-6 shadow-sm">
-                            <p class="text-base sm:text-lg text-sand-900 leading-[1.85]">
-                                引導師會陪你往下問：為什麼喜歡？喜歡的背後，藏著什麼？從「我有什麼興趣」，到原因，再慢慢收斂出屬於你的特質與能力。你也會聽見其他人分享，同樣的問題，不同的人，答得不一樣。那個差異，就是一面鏡子。
-                            </p>
+                        <div class="carousel-slide px-6 sm:px-10 py-8 sm:py-10">
+                            <div class="w-full bg-white border border-sand-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-5">
+                                <p class="text-base sm:text-lg text-sand-900 leading-[1.9]">
+                                    引導師會陪你往下問：為什麼喜歡？喜歡的背後，藏著什麼？從「我有什麼興趣」，到原因，再慢慢收斂出屬於你的特質與能力。
+                                </p>
+                                <p class="text-base sm:text-lg text-sand-900 leading-[1.9]">
+                                    你也會聽見其他人分享，同樣的問題，不同的人，答得不一樣。那個差異，就是一面鏡子。
+                                </p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="relative flex gap-4 sm:gap-6 items-start">
-                        <span class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full bg-sage-600 text-white text-sm font-bold flex items-center justify-center shadow-sm z-10">5</span>
-                        <div class="flex-1 bg-gradient-to-br from-sage-50 to-sand-50 border border-sage-200 rounded-2xl p-5 sm:p-6 shadow-sm">
-                            <p class="text-base sm:text-lg text-sand-900 leading-[1.85]">
-                                離開的時候，你會帶走一份說得上來的自我認識，不是測完就忘的幾個字。你會在別人的回應裡，看見自己沒注意過的面，有時候還會碰到一個新的自己。你會更清楚自己的特質可以怎麼用，最後收斂成幾件小事——帶回去，做得到，也還想繼續走。
-                            </p>
+                        <div class="carousel-slide px-6 sm:px-10 py-8 sm:py-10">
+                            <div class="w-full bg-gradient-to-br from-sage-50 to-sand-50 border border-sage-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-5">
+                                <p class="text-base sm:text-lg text-sand-900 leading-[1.9]">
+                                    離開的時候，你會帶走一份說得上來的自我認識，不是測完就忘的幾個字。你會在別人的回應裡，看見自己沒注意過的面，有時候還會碰到一個新的自己。
+                                </p>
+                                <p class="text-base sm:text-lg text-sand-900 leading-[1.9]">
+                                    你會更清楚自己的特質可以怎麼用，最後收斂成幾件小事——帶回去，做得到，也還想繼續走。
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <button type="button" onclick="carouselPrev('story')" aria-label="上一段" class="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-white/90 hover:bg-white text-sage-800 rounded-full shadow-md flex items-center justify-center transition border border-sand-100">
+                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                </button>
+                <button type="button" onclick="carouselNext('story')" aria-label="下一段" class="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-white/90 hover:bg-white text-sage-800 rounded-full shadow-md flex items-center justify-center transition border border-sand-100">
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </button>
             </div>
+            <div id="story-dots" class="flex justify-center gap-2 mt-5"></div>
         </div>
     </section>
     <section class="py-12 sm:py-16 bg-white border-b border-sand-100">
@@ -289,25 +305,25 @@
             <p class="text-center text-xs font-semibold text-sage-600 tracking-wider mb-6">工作坊現場一瞥</p>
             <div class="relative rounded-3xl overflow-hidden border border-sand-200 shadow-lg bg-sand-100">
                 <div id="gallery-viewport" class="overflow-hidden">
-                    <div id="gallery-track" class="gallery-track">
-                        <div class="gallery-slide">
+                    <div id="gallery-track" class="carousel-track">
+                        <div class="carousel-slide">
                             <img src="images/workshop-cards-table.png" alt="工作坊桌面上擺放興趣卡牌與記錄紙" class="w-full h-56 sm:h-80 md:h-[28rem] object-cover">
                         </div>
-                        <div class="gallery-slide">
+                        <div class="carousel-slide">
                             <img src="images/workshop-cards-floor.png" alt="參與者在地面上挑選與排列興趣卡牌" class="w-full h-56 sm:h-80 md:h-[28rem] object-cover object-top">
                         </div>
-                        <div class="gallery-slide">
+                        <div class="carousel-slide">
                             <img src="images/workshop-writing.png" alt="參與者書寫特質分析與便利貼整理" class="w-full h-56 sm:h-80 md:h-[28rem] object-cover">
                         </div>
-                        <div class="gallery-slide">
+                        <div class="carousel-slide">
                             <img src="images/cards-workshop.png" alt="特質卡牌、手繪便利貼與書寫工具" class="w-full h-56 sm:h-80 md:h-[28rem] object-cover">
                         </div>
                     </div>
                 </div>
-                <button type="button" onclick="event.stopPropagation(); galleryPrev()" aria-label="上一張" class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-white/90 hover:bg-white text-sage-800 rounded-full shadow-md flex items-center justify-center transition">
+                <button type="button" onclick="event.stopPropagation(); carouselPrev('photo')" aria-label="上一張" class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-white/90 hover:bg-white text-sage-800 rounded-full shadow-md flex items-center justify-center transition">
                     <i data-lucide="chevron-left" class="w-5 h-5"></i>
                 </button>
-                <button type="button" onclick="event.stopPropagation(); galleryNext()" aria-label="下一張" class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-white/90 hover:bg-white text-sage-800 rounded-full shadow-md flex items-center justify-center transition">
+                <button type="button" onclick="event.stopPropagation(); carouselNext('photo')" aria-label="下一張" class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-white/90 hover:bg-white text-sage-800 rounded-full shadow-md flex items-center justify-center transition">
                     <i data-lucide="chevron-right" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -1207,62 +1223,106 @@
             });
         }
 
-        let galleryIndex = 0;
-        let gallerySlideCount = 0;
+        const carousels = {};
 
-        function initGallery() {
-            const track = document.getElementById('gallery-track');
-            const dotsContainer = document.getElementById('gallery-dots');
-            const viewport = document.getElementById('gallery-viewport');
-            if (!track || !dotsContainer || !viewport) return;
+        function initCarousel(key, { trackId, viewportId, dotsId, counterId, clickToAdvance = false, autoHeight = false }) {
+            const track = document.getElementById(trackId);
+            const viewport = document.getElementById(viewportId);
+            const dotsContainer = document.getElementById(dotsId);
+            if (!track || !viewport) return;
 
-            gallerySlideCount = track.children.length;
-            dotsContainer.innerHTML = Array.from({ length: gallerySlideCount }, (_, i) =>
-                `<button type="button" onclick="galleryGoTo(${i})" aria-label="第 ${i + 1} 張" class="gallery-dot h-2 rounded-full bg-sand-300 transition-all duration-300 ${i === 0 ? 'active w-5' : 'w-2'}"></button>`
-            ).join('');
+            const count = track.children.length;
+            carousels[key] = { index: 0, count, trackId, viewportId, dotsId, counterId, autoHeight };
+
+            if (dotsContainer) {
+                dotsContainer.innerHTML = Array.from({ length: count }, (_, i) =>
+                    `<button type="button" onclick="carouselGoTo('${key}', ${i})" aria-label="第 ${i + 1} 項" data-carousel-dot="${key}" class="carousel-dot h-2 rounded-full bg-sand-300 transition-all duration-300 ${i === 0 ? 'active w-5' : 'w-2'}"></button>`
+                ).join('');
+            }
 
             let touchStartX = 0;
             viewport.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
             viewport.addEventListener('touchend', e => {
                 const diff = touchStartX - e.changedTouches[0].screenX;
-                if (Math.abs(diff) > 50) diff > 0 ? galleryNext() : galleryPrev();
+                if (Math.abs(diff) > 50) diff > 0 ? carouselNext(key) : carouselPrev(key);
             }, { passive: true });
 
-            viewport.addEventListener('click', () => galleryNext());
-            viewport.style.cursor = 'pointer';
-            updateGallery();
+            if (clickToAdvance) {
+                viewport.addEventListener('click', () => carouselNext(key));
+                viewport.style.cursor = 'pointer';
+            }
+
+            updateCarousel(key);
         }
 
-        function updateGallery() {
-            const track = document.getElementById('gallery-track');
-            if (!track || gallerySlideCount === 0) return;
-            track.style.transform = `translateX(-${galleryIndex * 100}%)`;
-            document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i === galleryIndex);
-                dot.classList.toggle('w-5', i === galleryIndex);
-                dot.classList.toggle('w-2', i !== galleryIndex);
-            });
+        function updateCarousel(key) {
+            const state = carousels[key];
+            if (!state || state.count === 0) return;
+
+            const track = document.getElementById(state.trackId);
+            if (!track) return;
+            track.style.transform = `translateX(-${state.index * 100}%)`;
+
+            if (state.counterId) {
+                const counter = document.getElementById(state.counterId);
+                if (counter) counter.textContent = `${state.index + 1} / ${state.count}`;
+            }
+
+            if (state.dotsId) {
+                document.querySelectorAll(`[data-carousel-dot="${key}"]`).forEach((dot, i) => {
+                    dot.classList.toggle('active', i === state.index);
+                    dot.classList.toggle('w-5', i === state.index);
+                    dot.classList.toggle('w-2', i !== state.index);
+                });
+            }
+
+            if (state.autoHeight && state.viewportId) {
+                const viewport = document.getElementById(state.viewportId);
+                const slide = track.children[state.index];
+                if (viewport && slide) {
+                    viewport.style.transition = 'height 0.4s ease-out';
+                    viewport.style.height = slide.offsetHeight + 'px';
+                }
+            }
         }
 
-        function galleryGoTo(index) {
-            if (gallerySlideCount === 0) return;
-            galleryIndex = index;
-            updateGallery();
+        function carouselGoTo(key, index) {
+            const state = carousels[key];
+            if (!state || state.count === 0) return;
+            state.index = index;
+            updateCarousel(key);
         }
 
-        function galleryPrev() {
-            if (gallerySlideCount === 0) return;
-            galleryIndex = (galleryIndex - 1 + gallerySlideCount) % gallerySlideCount;
-            updateGallery();
+        function carouselPrev(key) {
+            const state = carousels[key];
+            if (!state || state.count === 0) return;
+            state.index = (state.index - 1 + state.count) % state.count;
+            updateCarousel(key);
         }
 
-        function galleryNext() {
-            if (gallerySlideCount === 0) return;
-            galleryIndex = (galleryIndex + 1) % gallerySlideCount;
-            updateGallery();
+        function carouselNext(key) {
+            const state = carousels[key];
+            if (!state || state.count === 0) return;
+            state.index = (state.index + 1) % state.count;
+            updateCarousel(key);
         }
 
-        initGallery();
+        initCarousel('story', {
+            trackId: 'story-track',
+            viewportId: 'story-viewport',
+            dotsId: 'story-dots',
+            counterId: 'story-counter',
+            autoHeight: true
+        });
+
+        window.addEventListener('resize', () => updateCarousel('story'));
+
+        initCarousel('photo', {
+            trackId: 'gallery-track',
+            viewportId: 'gallery-viewport',
+            dotsId: 'gallery-dots',
+            clickToAdvance: true
+        });
     </script>
 </body>
 </html>
