@@ -135,6 +135,18 @@
             background-color: #5c7a65;
             width: 1.25rem;
         }
+
+        /* 摺疊區（延伸閱讀、FAQ） */
+        .fold-panel summary {
+            list-style: none;
+            cursor: pointer;
+        }
+        .fold-panel summary::-webkit-details-marker {
+            display: none;
+        }
+        .fold-panel[open] .fold-chevron {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body class="text-sand-900 antialiased selection:bg-rosewood-200 selection:text-rosewood-700">
@@ -157,6 +169,7 @@
                     <a href="#tracks" class="text-sand-800 hover:text-sage-700 transition">適合誰</a>
                     <a href="#facilitator" class="text-sand-800 hover:text-sage-700 transition">引導師介紹</a>
                     <a href="#testimonials" class="text-sand-800 hover:text-sage-700 transition">過去回饋</a>
+                    <a href="#faq" class="text-sand-800 hover:text-sage-700 transition">常見問題</a>
                 </div>
                 <!-- <div>
                     <button onclick="openModal()" class="bg-sage-600 hover:bg-sage-700 text-white px-4 py-2 rounded-full text-sm font-medium transition duration-300 shadow-sm shadow-sage-600/20 flex items-center gap-1.5">
@@ -185,7 +198,7 @@
                 </span>
             </h1>
             <p class="text-lg sm:text-xl text-sand-800 max-w-2xl mx-auto mb-10 leading-relaxed">
-                不用再做一次測驗。從你本來就喜歡的事開始，認識自己。
+                不必再做測驗。從你喜歡的事認識自己，也從他人的眼中認識自己——兩條路，看見更完整的你。
             </p>
             <a href="#about" class="inline-flex items-center gap-1.5 text-sm font-semibold text-sage-700 hover:text-sage-800 transition">
                 <span>為什麼要來？</span>
@@ -362,10 +375,7 @@
                 <h2 class="text-3xl font-bold text-sand-900 mt-2">工作坊流程（2-3 小時體驗）</h2>
             </div>
 
-            <!-- 時間軸 -->
             <div class="relative border-l border-sand-200 ml-4 sm:ml-12 space-y-12">
-                
-                <!-- 階段一 -->
                 <div class="relative pl-8 sm:pl-12 group">
                     <div class="absolute -left-3.5 top-1 w-7 h-7 rounded-full bg-white border-4 border-sage-600 flex items-center justify-center text-xs font-bold text-sage-700 group-hover:scale-110 transition duration-300">
                         1
@@ -376,36 +386,34 @@
                                 【階段一：盲測探索】<span class="text-sm font-normal text-sand-800 ml-2">重啟自我視角</span>
                             </h3>
                             <span class="inline-block bg-sage-50 text-sage-700 border border-sage-200 text-xs font-semibold px-3 py-1 rounded-full w-max">
-                                約 30 Mins
+                                約 30 分
                             </span>
                         </div>
-                        <p class="text-sm sm:text-base text-sand-800 leading-relaxed mb-4">
+                        <p class="text-sm sm:text-base text-sand-800 leading-relaxed">
                             暫時卸下社會、家庭、職場的所有標籤與框架。我們不聊工作與責任，而是從最純粹的<strong>「興趣與熱愛」</strong>切入，找出你的原廠設定。
                         </p>
                     </div>
                 </div>
 
-                <!-- 階段二 -->
                 <div class="relative pl-8 sm:pl-12 group">
                     <div class="absolute -left-3.5 top-1 w-7 h-7 rounded-full bg-white border-4 border-rosewood-500 flex items-center justify-center text-xs font-bold text-rosewood-700 group-hover:scale-110 transition duration-300">
                         2
                     </div>
-                    <div class="bg-sand-50 p-6 sm:p-8 rounded-2xl border border-sand-100 shadow-sm relative overflow-hidden">
+                    <div class="bg-sand-50 p-6 sm:p-8 rounded-2xl border border-sand-100 shadow-sm">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
                             <h3 class="text-lg sm:text-xl font-bold text-rosewood-700">
                                 【階段二：他人眼中的我】<span class="text-sm font-normal text-sand-800 ml-2">解鎖未知的自己</span>
                             </h3>
                             <span class="inline-block bg-rosewood-100 text-rosewood-700 border border-rosewood-200 text-xs font-semibold px-3 py-1 rounded-full w-max">
-                                60 Mins
+                                約 60 分
                             </span>
                         </div>
-                        <p class="text-sm sm:text-base text-sand-800 leading-relaxed mb-4">
+                        <p class="text-sm sm:text-base text-sand-800 leading-relaxed">
                             <strong>核心互動體驗。</strong>透過現場夥伴或同伴客觀、專注且溫馨的回饋，找出那些被你習以為常、實際上極具天賦的力量。
                         </p>
                     </div>
                 </div>
 
-                <!-- 階段三 -->
                 <div class="relative pl-8 sm:pl-12 group">
                     <div class="absolute -left-3.5 top-1 w-7 h-7 rounded-full bg-white border-4 border-sage-600 flex items-center justify-center text-xs font-bold text-sage-700 group-hover:scale-110 transition duration-300">
                         3
@@ -413,19 +421,18 @@
                     <div class="bg-sand-50 p-6 sm:p-8 rounded-2xl border border-sand-100 shadow-sm">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
                             <h3 class="text-lg sm:text-xl font-bold text-sage-800">
-                                【階段三：特質分析】<span class="text-sm font-normal text-sand-800 ml-2">找出你的優劣勢天賦</span>
+                                【階段三：特質分析】<span class="text-sm font-normal text-sand-800 ml-2">找出你的特質幅度</span>
                             </h3>
                             <span class="inline-block bg-sage-50 text-sage-700 border border-sage-200 text-xs font-semibold px-3 py-1 rounded-full w-max">
-                                60 Mins
+                                約 60 分
                             </span>
                         </div>
-                        <p class="text-sm sm:text-base text-sand-800 leading-relaxed mb-4">
-                            <strong>理性框架對話。</strong>引導師將運用嚴謹的系統框架和卡牌，分析特質的呈現幅度，和各特質的一體兩面。幫助你學會如何在生活中，使用自己的天賦。
+                        <p class="text-sm sm:text-base text-sand-800 leading-relaxed">
+                            <strong>理性框架對話。</strong>引導師運用系統框架和卡牌，找出你的特質幅度。每個特質都是一體兩面——過少有什麼風險與好處，過多又有什麼風險與好處，幫助你學會在生活中善用自己的天賦。
                         </p>
                     </div>
                 </div>
 
-                <!-- 階段四 -->
                 <div class="relative pl-8 sm:pl-12 group">
                     <div class="absolute -left-3.5 top-1 w-7 h-7 rounded-full bg-white border-4 border-sage-600 flex items-center justify-center text-xs font-bold text-sage-700 group-hover:scale-110 transition duration-300">
                         4
@@ -436,15 +443,14 @@
                                 【階段四：行動收斂】<span class="text-sm font-normal text-sand-800 ml-2">屬於你的微小行動</span>
                             </h3>
                             <span class="inline-block bg-sage-50 text-sage-700 border border-sage-200 text-xs font-semibold px-3 py-1 rounded-full w-max">
-                                30 Mins
+                                約 30 分
                             </span>
                         </div>
-                        <p class="text-sm sm:text-base text-sand-800 leading-relaxed mb-4">
+                        <p class="text-sm sm:text-base text-sand-800 leading-relaxed">
                             在安定溫馨的氛圍中收尾。我們會將探索獲得的卡牌特質，收斂成一個個微小行動，帶著滿滿的力量回歸日常生活。
                         </p>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -461,65 +467,69 @@
                 <div class="w-12 h-1 bg-rosewood-200 mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 mb-14">
-                <!-- 卡牌方法 -->
-                <div class="bg-sand-50 border border-sand-100 rounded-3xl p-8 shadow-sm">
-                    <div class="w-12 h-12 bg-sage-100 text-sage-700 rounded-2xl flex items-center justify-center mb-6">
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white border border-sand-100 rounded-3xl p-8 shadow-sm text-center">
+                    <div class="w-12 h-12 bg-sage-100 text-sage-700 rounded-2xl flex items-center justify-center mb-6 mx-auto">
                         <i data-lucide="layers" class="w-6 h-6"></i>
                     </div>
                     <h3 class="text-xl font-bold text-sage-800 mb-4">心理學取向的特質卡牌</h3>
-                    <p class="text-sm text-sand-800 leading-relaxed mb-4">
-                        工作坊採用由<strong>諮商專業背景</strong>發展的特質卡牌系統。卡牌架構固定，從<strong>興趣</strong>切入、追問<strong>為什麼喜歡</strong>，再收斂出你的個性特質。
+                    <p class="text-sm sm:text-base text-sand-800 leading-relaxed mb-4">
+                        由諮商專業背景發展的卡牌系統，從<strong>興趣</strong>切入、追問<strong>為什麼喜歡</strong>，再收斂出你的個性特質。
                     </p>
-                    <p class="text-sm text-sand-800 leading-relaxed mb-6">
-                        每張特質都是<strong>一體兩面</strong>：天賦與失衡狀態並存。現場由引導師帶領解讀與對話，幫助你看見那些習以為常、卻從未好好認領的自己。
+                    <p class="text-sm sm:text-base text-sand-800 leading-relaxed mb-6">
+                        每個特質都是<strong>一體兩面</strong>，過多、過少都不好。我們會找出你的特質幅度——少的談風險與好處，多的也談過度的風險與好處。現場由引導師帶領解讀與對話。
                     </p>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-wrap gap-2 justify-center">
                         <span class="text-[11px] font-semibold text-sage-700 bg-sage-100 px-3 py-1 rounded-full">興趣 → 原因 → 特質</span>
-                        <span class="text-[11px] font-semibold text-rosewood-700 bg-rosewood-100 px-3 py-1 rounded-full">天賦 × 失衡</span>
+                        <span class="text-[11px] font-semibold text-rosewood-700 bg-rosewood-100 px-3 py-1 rounded-full">過少／過多的風險與好處</span>
                         <span class="text-[11px] font-semibold text-sand-800 bg-sand-200 px-3 py-1 rounded-full">引導師帶領</span>
                     </div>
                 </div>
 
-                <!-- 延伸閱讀 -->
-                <div class="bg-sand-50 border border-sand-100 rounded-3xl p-8 shadow-sm">
-                    <div class="w-12 h-12 bg-rosewood-100 text-rosewood-700 rounded-2xl flex items-center justify-center mb-6">
-                        <i data-lucide="book-open" class="w-6 h-6"></i>
+                <details class="fold-panel mt-4 bg-white border border-sand-200 rounded-2xl shadow-sm overflow-hidden">
+                    <summary class="flex items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-rosewood-700 hover:bg-sand-50 transition">
+                        <span class="inline-flex items-center gap-2">
+                            <i data-lucide="book-open" class="w-4 h-4"></i>
+                            延伸閱讀｜心理學與自我覺察
+                        </span>
+                        <i data-lucide="chevron-down" class="fold-chevron w-4 h-4 text-sand-800 transition-transform duration-200"></i>
+                    </summary>
+                    <div class="px-5 pb-5 pt-1 border-t border-sand-100">
+                        <p class="text-xs text-sand-800 leading-relaxed mb-4">
+                            每期工作坊會依主題調整參考書目，皆以心理學、自我覺察與天賦探索為主。以下是近期常搭配的讀物：
+                        </p>
+                        <div class="space-y-3">
+                            <div class="bg-sand-50 border border-sand-200 rounded-xl p-4 flex items-start gap-3">
+                                <span class="p-2 bg-sage-100 text-sage-600 rounded-lg shrink-0">
+                                    <i data-lucide="book-marked" class="w-4 h-4"></i>
+                                </span>
+                                <div>
+                                    <p class="text-sm font-bold text-sand-900">《高敏感是種天賦》</p>
+                                    <p class="text-xs text-sand-800 mt-0.5 leading-relaxed">認識高敏感特質，理解感官與情緒如何影響日常</p>
+                                </div>
+                            </div>
+                            <div class="bg-sand-50 border border-sand-200 rounded-xl p-4 flex items-start gap-3">
+                                <span class="p-2 bg-sage-100 text-sage-600 rounded-lg shrink-0">
+                                    <i data-lucide="book-marked" class="w-4 h-4"></i>
+                                </span>
+                                <div>
+                                    <p class="text-sm font-bold text-sand-900">《跨域致勝》</p>
+                                    <p class="text-xs text-sand-800 mt-0.5 leading-relaxed">從多元興趣與能力交會處，看見獨特優勢與職涯可能</p>
+                                </div>
+                            </div>
+                            <div class="bg-sand-50/60 border border-dashed border-sand-300 rounded-xl p-4 flex items-start gap-3">
+                                <span class="p-2 bg-sand-100 text-sand-800 rounded-lg shrink-0">
+                                    <i data-lucide="plus" class="w-4 h-4"></i>
+                                </span>
+                                <div>
+                                    <p class="text-sm font-semibold text-sand-800">更多心理學讀物</p>
+                                    <p class="text-xs text-sand-800 mt-0.5 leading-relaxed">依當期主題補充，現場與引導師討論延伸</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-rosewood-700 mb-2">延伸閱讀｜心理學與自我覺察</h3>
-                    <p class="text-xs text-sand-800 leading-relaxed mb-5">
-                        每期工作坊會依主題調整參考書目，皆以心理學、自我覺察與天賦探索為主。以下是近期常搭配的讀物：
-                    </p>
-                    <div class="space-y-3">
-                        <div class="bg-white border border-sand-200 rounded-xl p-4 flex items-start gap-3">
-                            <span class="p-2 bg-sage-100 text-sage-600 rounded-lg shrink-0">
-                                <i data-lucide="book-marked" class="w-4 h-4"></i>
-                            </span>
-                            <div>
-                                <p class="text-sm font-bold text-sand-900">《高敏感是種天賦》</p>
-                                <p class="text-xs text-sand-800 mt-0.5 leading-relaxed">認識高敏感特質，理解感官與情緒如何影響日常</p>
-                            </div>
-                        </div>
-                        <div class="bg-white border border-sand-200 rounded-xl p-4 flex items-start gap-3">
-                            <span class="p-2 bg-sage-100 text-sage-600 rounded-lg shrink-0">
-                                <i data-lucide="book-marked" class="w-4 h-4"></i>
-                            </span>
-                            <div>
-                                <p class="text-sm font-bold text-sand-900">《跨域致勝》</p>
-                                <p class="text-xs text-sand-800 mt-0.5 leading-relaxed">從多元興趣與能力交會處，看見獨特優勢與職涯可能</p>
-                            </div>
-                        </div>
-                        <div class="bg-white/60 border border-dashed border-sand-300 rounded-xl p-4 flex items-start gap-3">
-                            <span class="p-2 bg-sand-100 text-sand-800 rounded-lg shrink-0">
-                                <i data-lucide="plus" class="w-4 h-4"></i>
-                            </span>
-                            <div>
-                                <p class="text-sm font-semibold text-sand-800">更多心理學讀物</p>
-                                <p class="text-xs text-sand-800 mt-0.5 leading-relaxed">依當期主題補充，現場與引導師討論延伸</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </details>
+
             </div>
         </div>
     </section>
@@ -534,43 +544,29 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- 軌道一：關係同理 -->
-                <div class="bg-sand-50 p-8 rounded-3xl shadow-sm hover:shadow-md transition border border-sand-100 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-rosewood-100 text-rosewood-700 rounded-2xl flex items-center justify-center mb-6">
-                            <i data-lucide="heart-handshake" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-rosewood-700 mb-4">關係與同理 ｜ 看見自己，溫暖關係</h3>
-                      <p class="text-sand-800 leading-relaxed text-sm sm:text-base mb-6">
-    <strong>適合個人、伴侶、或是與朋友同行。</strong> 探索的核心從不只是為了解決衝突，而是全面的「看見自己，進而理解他人」。
-    來到這裡，<strong>陌生人</strong>將成為妳最乾淨的鏡子，照出妳在全新關係裡最直觀的特質原型；
-    而<strong>伴侶與朋友</strong>則能映照出更深、更多角度的妳。
-    找到天性，將這些特質巧妙轉化為關係中的「優勢互補」，建立更具支持感的親密連結。
-</p>
+                <div class="bg-sand-50 p-8 rounded-3xl shadow-sm border border-sand-100">
+                    <div class="w-12 h-12 bg-rosewood-100 text-rosewood-700 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="heart-handshake" class="w-6 h-6"></i>
                     </div>
-                 <div class="border-t border-sand-100 pt-4 text-xs text-rosewood-600 font-semibold flex items-center gap-1.5">
-    <i data-lucide="check" class="w-4 h-4"></i>
-    <span>適合：想在陌生人前了解自己、想在伴侶摯友中認領更多自己面向者</span>
-</div>
+                    <h3 class="text-xl font-bold text-rosewood-700 mb-4">關係與同理</h3>
+                    <p class="text-sand-800 leading-relaxed text-sm sm:text-base">
+                        適合個人、伴侶或與朋友同行。透過他人回饋看見自己，理解彼此特質的差異。把天性轉成關係裡的優勢互補，建立更有支持感的連結。
+                    </p>
                 </div>
 
-                <!-- 軌道二：職涯探索 -->
-                <div class="bg-sand-50 p-8 rounded-3xl shadow-sm hover:shadow-md transition border border-sand-100 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-sage-100 text-sage-700 rounded-2xl flex items-center justify-center mb-6">
-                            <i data-lucide="briefcase" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-sage-800 mb-4">職涯與天賦軌道 ｜ 解密天賦，定位方向</h3>
-                        <p class="text-sand-800 leading-relaxed text-sm sm:text-base mb-6">
-                            <strong>最適合面臨職涯轉折、斜槓探索或職場迷惘者。</strong>不流於冷冰冰的性向測驗，我們從你自小的「興趣」切入，尋找你與生俱來的優勢。看見你在團體或專案中獨特的影響力類型，為你勾勒出符合本質的職涯路徑與生活藍圖。
-                        </p>
+                <div class="bg-sand-50 p-8 rounded-3xl shadow-sm border border-sand-100">
+                    <div class="w-12 h-12 bg-sage-100 text-sage-700 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="briefcase" class="w-6 h-6"></i>
                     </div>
-                    <div class="border-t border-sand-100 pt-4 text-xs text-sage-600 font-semibold flex items-center gap-1.5">
-                        <i data-lucide="check" class="w-4 h-4"></i>
-                        <span>適合：職場核心優勢定位、轉職焦慮與斜槓規劃</span>
-                    </div>
+                    <h3 class="text-xl font-bold text-sage-800 mb-4">職涯與天賦</h3>
+                    <p class="text-sand-800 leading-relaxed text-sm sm:text-base">
+                        適合職涯轉折、斜槓探索或職場迷惘者。從自小興趣切入，找回與生俱來的優勢。看見你在團體中的影響力，勾勒符合本質的職涯方向。
+                    </p>
                 </div>
             </div>
+            <p class="text-center mt-8">
+                <a href="#faq" class="text-sm text-sage-700 hover:text-sage-800 font-medium">兩大軌道詳細說明 →</a>
+            </p>
         </div>
     </section>
 
@@ -598,66 +594,54 @@
 
                     <!-- 右側 -->
                     <div class="md:col-span-2 space-y-8">
-                        <!-- 專業經歷 -->
-                        <div>
-                            <span class="text-xs font-bold tracking-widest text-rosewood-500 uppercase">Experience</span>
-                            <h4 class="text-lg font-bold text-sand-900 mt-1 mb-4">專業經歷</h4>
-                            <div class="grid sm:grid-cols-2 gap-3">
-                                <div class="bg-white/70 border border-sand-200 rounded-xl p-4 flex items-start gap-3">
-                                    <span class="p-2 bg-rosewood-100 text-rosewood-600 rounded-lg shrink-0">
-                                        <i data-lucide="award" class="w-4 h-4"></i>
-                                    </span>
-                                    <div>
-                                        <p class="text-sm font-bold text-sand-900">張老師培訓二階</p>
-                                        <p class="text-xs text-sand-800 mt-0.5">累積系統化引導框架</p>
-                                    </div>
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <div class="bg-white/70 border border-sand-200 rounded-xl p-4 flex items-start gap-3">
+                                <span class="p-2 bg-rosewood-100 text-rosewood-600 rounded-lg shrink-0">
+                                    <i data-lucide="award" class="w-4 h-4"></i>
+                                </span>
+                                <div>
+                                    <p class="text-sm font-bold text-sand-900">張老師培訓二階</p>
+                                    <p class="text-xs text-sand-800 mt-0.5">累積系統化引導框架</p>
                                 </div>
-                                <div class="bg-white/70 border border-sand-200 rounded-xl p-4 flex items-start gap-3">
-                                    <span class="p-2 bg-sage-100 text-sage-600 rounded-lg shrink-0">
-                                        <i data-lucide="brain" class="w-4 h-4"></i>
-                                    </span>
-                                    <div>
-                                        <p class="text-sm font-bold text-sand-900">心理學自我覺察</p>
-                                        <p class="text-xs text-sand-800 mt-0.5">諮商學習與實踐超過 7 年</p>
-                                    </div>
+                            </div>
+                            <div class="bg-white/70 border border-sand-200 rounded-xl p-4 flex items-start gap-3">
+                                <span class="p-2 bg-sage-100 text-sage-600 rounded-lg shrink-0">
+                                    <i data-lucide="brain" class="w-4 h-4"></i>
+                                </span>
+                                <div>
+                                    <p class="text-sm font-bold text-sand-900">心理學自我覺察</p>
+                                    <p class="text-xs text-sand-800 mt-0.5">諮商學習與實踐超過 7 年</p>
                                 </div>
-                                <div class="bg-white/70 border border-sand-200 rounded-xl p-4 flex items-start gap-3">
-                                    <span class="p-2 bg-sage-100 text-sage-600 rounded-lg shrink-0">
-                                        <i data-lucide="users" class="w-4 h-4"></i>
-                                    </span>
-                                    <div>
-                                        <p class="text-sm font-bold text-sand-900">10+ 場工作坊</p>
-                                        <p class="text-xs text-sand-800 mt-0.5">舉辦與現場引導經驗</p>
-                                    </div>
+                            </div>
+                            <div class="bg-white/70 border border-sand-200 rounded-xl p-4 flex items-start gap-3">
+                                <span class="p-2 bg-sage-100 text-sage-600 rounded-lg shrink-0">
+                                    <i data-lucide="users" class="w-4 h-4"></i>
+                                </span>
+                                <div>
+                                    <p class="text-sm font-bold text-sand-900">10+ 場工作坊</p>
+                                    <p class="text-xs text-sand-800 mt-0.5">舉辦與現場引導經驗</p>
                                 </div>
-                                <div class="bg-white/70 border border-sand-200 rounded-xl p-4 flex items-start gap-3">
-                                    <span class="p-2 bg-rosewood-100 text-rosewood-600 rounded-lg shrink-0">
-                                        <i data-lucide="lightbulb" class="w-4 h-4"></i>
-                                    </span>
-                                    <div>
-                                        <p class="text-sm font-bold text-sand-900">清華大學設計思考工作坊團隊</p>
-                                        <p class="text-xs text-sand-800 mt-0.5">從真實需求出發，轉化解決方法</p>
-                                    </div>
+                            </div>
+                            <div class="bg-white/70 border border-sand-200 rounded-xl p-4 flex items-start gap-3">
+                                <span class="p-2 bg-rosewood-100 text-rosewood-600 rounded-lg shrink-0">
+                                    <i data-lucide="lightbulb" class="w-4 h-4"></i>
+                                </span>
+                                <div>
+                                    <p class="text-sm font-bold text-sand-900">清華大學設計思考工作坊團隊</p>
+                                    <p class="text-xs text-sand-800 mt-0.5">從真實需求出發，轉化解決方法</p>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- 我想分享的 -->
-                        <div>
-                            <span class="text-xs font-bold tracking-widest text-sage-600 uppercase">My Story</span>
-                            <h4 class="text-lg font-bold text-sage-800 mt-1 mb-3">我想與你分享的</h4>
-                            <div class="bg-white/60 border border-sage-200 rounded-2xl p-5">
-                                <p class="text-sm sm:text-base text-sand-900 leading-relaxed">
-                                    白天我是<strong>軟體工程師</strong>，本質上卻是一個<strong>高敏感</strong>的人。下班後的生活很豐富——我善於體驗、感受、也願意為自己找樂趣。
-                                </p>
-                                <p class="text-sm sm:text-base text-sand-900 leading-relaxed mt-3">
-                                    透過認識自己的特質，我學會在生活中用<strong>樂趣與創意</strong>活出自己，而不是被「應該怎樣」綁住。這份工作坊，就是我把這段路程整理出來、想陪你一起走的一段路。
-                                </p>
-                            </div>
-                            
+                        <div class="bg-white/60 border border-sage-200 rounded-2xl p-5">
+                            <p class="text-sm sm:text-base text-sand-900 leading-relaxed">
+                                白天我是<strong>軟體工程師</strong>，本質上卻是一個<strong>高敏感</strong>的人。下班後的生活很豐富——我善於體驗、感受、也願意為自己找樂趣。
+                            </p>
+                            <p class="text-sm sm:text-base text-sand-900 leading-relaxed mt-3">
+                                透過認識自己的特質，我學會在生活中用<strong>樂趣與創意</strong>活出自己，而不是被「應該怎樣」綁住。這份工作坊，就是我把這段路程整理出來、想陪你一起走的一段路。
+                            </p>
                         </div>
                         <div class="flex justify-center">
-                            <a href="https://www.instagram.com/ruby_travellife" id="facilitator-ig" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-rosewood-700 bg-rosewood-100 hover:bg-rosewood-200 px-4 py-2 rounded-full transition">
+                            <a href="https://www.instagram.com/ruby_travellife" id="facilitator-ig" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold text-rosewood-700 bg-rosewood-100 hover:bg-rosewood-200 px-4 py-2 rounded-full transition">
                                 <i data-lucide="instagram" class="w-3.5 h-3.5"></i>
                                 <span>更多我，歡迎到 IG 看看</span>
                             </a>
@@ -681,9 +665,9 @@
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-sand-100 relative">
                     <span class="absolute top-6 right-8 text-rosewood-200 text-6xl font-serif">“</span>
                     <p class="text-sm sm:text-base text-sand-900 leading-relaxed mb-6 italic relative z-10">
-                        「我和先生一起來參加。原本總覺得他做事太細節、很囉唆，透過卡牌對照才明白：那是他原廠設定中體貼人的『細膩偵測器』！我們終於不再用爭吵去消耗彼此，而是學會欣賞對方的特質。」
+                        「我和先生一起參加。長年在家照顧家庭，很難用一件明確的事說清楚自己是誰。在引導下，我把那些以為沒什麼的日常瑣事寫下來，才驚訝發現，原來裡面藏著好多我不知道的自己。過程中也更懂了先生的特質；現在遇到問題，會想怎麼用我的強項支持他的弱項，反過來也是，很感謝。」
                     </p>
-                    <div class="text-xs text-sage-700 font-semibold">— 結伴參加工作坊的夫妻學員</div>
+                    <div class="text-xs text-sage-700 font-semibold">— 與先生結伴參加的學員</div>
                 </div>
 
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-sand-100 relative">
@@ -694,45 +678,65 @@
                     <div class="text-xs text-sage-700 font-semibold">— 職涯探索學員</div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- 通用資訊 -->
-            <div class="bg-white rounded-3xl border border-sand-200 p-8 sm:p-12 shadow-sm max-w-4xl mx-auto">
-                <h3 class="text-xl font-bold text-sand-900 mb-8 text-center flex items-center justify-center gap-2">
-                    <i data-lucide="calendar-heart" class="w-5 h-5 text-sage-600"></i>
-                    <span>工作坊規格說明</span>
-                </h3>
-                
-                <div class="grid sm:grid-cols-3 gap-8 text-center sm:text-left">
-                    <div class="space-y-2 sm:border-r border-sand-100 last:border-0 pr-4">
-                        <div class="flex items-center justify-center sm:justify-start gap-2 text-sage-700 font-semibold mb-2">
-                            <i data-lucide="clock" class="w-4 h-4"></i>
-                            <span>活動時長</span>
-                        </div>
-                        <p class="text-sm text-sand-800 leading-relaxed">
-                            2.5 ~ 3 小時深度探索體驗。<br>依據主題軌道（關係/職涯）調整互動重點。
-                        </p>
-                    </div>
+    <!-- 常見問題 -->
+    <section id="faq" class="py-20 bg-white border-t border-sand-100">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold tracking-widest text-sage-600 uppercase">FAQ</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-sand-900 mt-2">常見問題</h2>
+                <p class="text-sm text-sand-800 mt-3">想多了解細節？展開看看</p>
+                <div class="w-12 h-1 bg-rosewood-200 mx-auto mt-4 rounded-full"></div>
+            </div>
 
-                    <div class="space-y-2 sm:border-r border-sand-100 last:border-0 pr-4">
-                        <div class="flex items-center justify-center sm:justify-start gap-2 text-sage-700 font-semibold mb-2">
-                            <i data-lucide="users-round" class="w-4 h-4"></i>
-                            <span>活動形式</span>
-                        </div>
-                        <p class="text-sm text-sand-800 leading-relaxed">
-                            4 ~ 8 人精緻小班或專屬包班。<br>非常適合朋友聚會、夫妻結伴同行或團隊凝聚。
-                        </p>
+            <div class="space-y-3">
+                <details class="fold-panel bg-sand-50 border border-sand-200 rounded-2xl overflow-hidden">
+                    <summary class="flex items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-sand-900 hover:bg-white transition">
+                        <span>關係與同理軌道適合誰？</span>
+                        <i data-lucide="chevron-down" class="fold-chevron w-4 h-4 text-sand-800 transition-transform duration-200 shrink-0"></i>
+                    </summary>
+                    <div class="px-5 pb-5 pt-1 border-t border-sand-200 text-sm text-sand-800 leading-relaxed space-y-3">
+                        <p>適合個人、伴侶、或是與朋友同行。探索的核心從不只是為了解決衝突，而是全面的「看見自己，進而理解他人」。</p>
+                        <p>陌生人將成為你最乾淨的鏡子，照出你在全新關係裡最直觀的特質原型；伴侶與朋友則能映照出更深、更多角度的你。找到天性，將特質轉化為關係中的優勢互補。</p>
+                        <p class="text-xs text-rosewood-600 font-semibold">適合：想在陌生人前了解自己、想在伴侶摯友中認領更多自己面向者</p>
                     </div>
+                </details>
 
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-center sm:justify-start gap-2 text-sage-700 font-semibold mb-2">
-                            <i data-lucide="map-pin" class="w-4 h-4"></i>
-                            <span>空間規格</span>
-                        </div>
-                        <p class="text-sm text-sand-800 leading-relaxed">
-                            高隱私空間。<br>可由主辦方安排，亦可由引導師協助代尋溫馨、靜謐且專屬的心靈包廂。
-                        </p>
+                <details class="fold-panel bg-sand-50 border border-sand-200 rounded-2xl overflow-hidden">
+                    <summary class="flex items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-sand-900 hover:bg-white transition">
+                        <span>職涯與天賦軌道適合誰？</span>
+                        <i data-lucide="chevron-down" class="fold-chevron w-4 h-4 text-sand-800 transition-transform duration-200 shrink-0"></i>
+                    </summary>
+                    <div class="px-5 pb-5 pt-1 border-t border-sand-200 text-sm text-sand-800 leading-relaxed space-y-3">
+                        <p>最適合面臨職涯轉折、斜槓探索或職場迷惘者。不流於冷冰冰的性向測驗，我們從你自小的興趣切入，尋找你與生俱來的優勢。</p>
+                        <p>看見你在團體或專案中獨特的影響力類型，為你勾勒出符合本質的職涯路徑與生活藍圖。</p>
+                        <p class="text-xs text-sage-600 font-semibold">適合：職場核心優勢定位、轉職焦慮與斜槓規劃</p>
                     </div>
-                </div>
+                </details>
+
+                <details class="fold-panel bg-sand-50 border border-sand-200 rounded-2xl overflow-hidden">
+                    <summary class="flex items-center justify-between gap-3 px-5 py-4 text-sm font-semibold text-sand-900 hover:bg-white transition">
+                        <span>工作坊時長、人數與地點？</span>
+                        <i data-lucide="chevron-down" class="fold-chevron w-4 h-4 text-sand-800 transition-transform duration-200 shrink-0"></i>
+                    </summary>
+                    <div class="px-5 pb-5 pt-1 border-t border-sand-200 text-sm text-sand-800 leading-relaxed space-y-4">
+                        <div>
+                            <p class="font-semibold text-sage-700">活動時長</p>
+                            <p class="mt-1">2.5～3 小時深度探索體驗，依主題軌道（關係／職涯）調整互動重點。</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-sage-700">活動形式</p>
+                            <p class="mt-1">4～8 人精緻小班或專屬包班，適合朋友聚會、夫妻結伴同行或團隊凝聚。</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-sage-700">空間規格</p>
+                            <p class="mt-1">高隱私空間，可由主辦方安排，亦可由引導師協助代尋溫馨、靜謐且專屬的心靈包廂。</p>
+                        </div>
+                    </div>
+                </details>
+
             </div>
         </div>
     </section>
@@ -772,9 +776,9 @@
                 <div class="flex gap-4">
                     <a href="#about" class="hover:underline">探索初衷</a>
                     <span>•</span>
-                    <a href="#tracks" class="hover:underline">應用軌道</a>
+                    <a href="#tracks" class="hover:underline">適合誰</a>
                     <span>•</span>
-                    <button onclick="openModal()" class="hover:underline">預約包班</button>
+                    <a href="#faq" class="hover:underline">常見問題</a>
                 </div>
             </div>
         </div>
