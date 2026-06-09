@@ -115,6 +115,20 @@
             70% { box-shadow: 0 0 0 14px rgba(196, 122, 112, 0); }
             100% { box-shadow: 0 0 0 0 rgba(196, 122, 112, 0); }
         }
+
+        /* 工作坊照片輪播 */
+        .gallery-track {
+            display: flex;
+            transition: transform 0.5s ease-out;
+        }
+        .gallery-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+        .gallery-dot.active {
+            background-color: #5c7a65;
+            width: 1.25rem;
+        }
     </style>
 </head>
 <body class="text-sand-900 antialiased selection:bg-rosewood-200 selection:text-rosewood-700">
@@ -203,6 +217,9 @@
         </div>
     </header>
 
+    <!-- 工作坊現場照片輪播 -->
+
+
     <!-- Page 2: 活動初衷 -->
     <section id="about" class="py-20 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -251,7 +268,36 @@
             </div>
         </div>
     </section>
-
+    <section class="py-12 sm:py-16 bg-white border-b border-sand-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-xs font-semibold text-sage-600 tracking-wider mb-6">工作坊現場一瞥</p>
+            <div class="relative rounded-3xl overflow-hidden border border-sand-200 shadow-lg bg-sand-100">
+                <div id="gallery-viewport" class="overflow-hidden">
+                    <div id="gallery-track" class="gallery-track">
+                        <div class="gallery-slide">
+                            <img src="images/workshop-cards-table.png" alt="工作坊桌面上擺放興趣卡牌與記錄紙" class="w-full h-56 sm:h-80 md:h-[28rem] object-cover">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="images/workshop-cards-floor.png" alt="參與者在地面上挑選與排列興趣卡牌" class="w-full h-56 sm:h-80 md:h-[28rem] object-cover object-top">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="images/workshop-writing.png" alt="參與者書寫特質分析與便利貼整理" class="w-full h-56 sm:h-80 md:h-[28rem] object-cover">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="images/cards-workshop.png" alt="特質卡牌、手繪便利貼與書寫工具" class="w-full h-56 sm:h-80 md:h-[28rem] object-cover">
+                        </div>
+                    </div>
+                </div>
+                <button type="button" onclick="galleryPrev()" aria-label="上一張" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 bg-white/90 hover:bg-white text-sage-800 rounded-full shadow-md flex items-center justify-center transition">
+                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                </button>
+                <button type="button" onclick="galleryNext()" aria-label="下一張" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 bg-white/90 hover:bg-white text-sage-800 rounded-full shadow-md flex items-center justify-center transition">
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div id="gallery-dots" class="flex justify-center gap-2 mt-5"></div>
+        </div>
+    </section>
     <!-- 🌟 未來規劃：兩大專屬發展軌道 -->
     <section id="tracks" class="py-20 bg-sand-50 border-y border-sand-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -877,78 +923,7 @@
         </div>
     </footer>
 
-    <!-- 預約留言彈窗 Modal -->
-    <!-- <div id="bookingModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sage-900/40 backdrop-blur-sm hidden">
-        <div class="bg-white w-full max-w-md rounded-2xl shadow-xl border border-sand-100 overflow-hidden transform transition-all duration-300 scale-95 opacity-0" id="modalContainer">
-            <!-- 彈窗頭部 -->
-            <div class="bg-gradient-to-r from-sage-700 to-sage-800 text-white px-6 py-4 flex justify-between items-center">
-                <div class="flex items-center gap-2">
-                    <i data-lucide="sparkles" class="w-5 h-5 text-rosewood-200"></i>
-                    <h3 class="font-bold tracking-wide">預約自我探索諮詢 / 包班</h3>
-                </div>
-                <button onclick="closeModal()" class="text-white/80 hover:text-white transition">
-                    <i data-lucide="x" class="w-6 h-6"></i>
-                </button>
-            </div>
 
-            <!-- 彈窗表單 -->
-            <form id="bookingForm" onsubmit="handleFormSubmit(event)" class="p-6 space-y-4">
-                <div>
-                    <label class="block text-xs font-bold text-sand-800 mb-1">您的姓名 / 稱呼 *</label>
-                    <input type="text" required placeholder="例如：林小姐 / 王先生" class="w-full px-3 py-2 border border-sand-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sage-600 focus:border-transparent">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-sand-800 mb-1">聯絡資訊 (Email / 常用Line ID) *</label>
-                    <input type="text" required placeholder="請留下最容易找到您的資訊" class="w-full px-3 py-2 border border-sand-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sage-600 focus:border-transparent">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-sand-800 mb-1">您本次想探索的應用方向（可複選）</label>
-                    <div class="grid grid-cols-2 gap-2 mt-1.5">
-                        <label class="flex items-center gap-2 p-2.5 border border-sand-200 rounded-lg text-xs cursor-pointer hover:bg-sand-50">
-                            <input type="checkbox" name="interests" value="relationship" class="text-sage-600">
-                            <span>關係同理 (伴侶/摯友)</span>
-                        </label>
-                        <label class="flex items-center gap-2 p-2.5 border border-sand-200 rounded-lg text-xs cursor-pointer hover:bg-sand-50">
-                            <input type="checkbox" name="interests" value="career" class="text-sage-600">
-                            <span>職涯優勢探索</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-sand-800 mb-1">您的「興趣（最常獨處/放空做的事）」是？</label>
-                    <input type="text" placeholder="例如：深夜閱讀、烹飪、咖啡、書寫等" class="w-full px-3 py-2 border border-sand-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sage-600 focus:border-transparent">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-sand-800 mb-1">簡短的心語 / 對本活動的期待 (選填)</label>
-                    <textarea rows="2" placeholder="不論是想改善與另一半的溝通，還是正面臨職涯瓶頸，都歡迎簡短告訴我們..." class="w-full px-3 py-2 border border-sand-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sage-600 focus:border-transparent"></textarea>
-                </div>
-
-                <div class="pt-2">
-                    <button type="submit" class="w-full bg-sage-600 hover:bg-sage-700 text-white font-semibold py-2.5 rounded-lg transition duration-300 text-sm shadow-md shadow-sage-600/10">
-                        送出預約申請
-                    </button>
-                </div>
-            </form>
-
-            <!-- 提交成功 -->
-            <div id="successMessage" class="hidden p-8 text-center space-y-4">
-                <div class="w-12 h-12 bg-sage-100 text-sage-600 rounded-full flex items-center justify-center mx-auto">
-                    <i data-lucide="check" class="w-6 h-6"></i>
-                </div>
-                <h4 class="text-lg font-bold text-sand-900">預約申請已成功送出！</h4>
-                <p class="text-xs text-sand-800 leading-relaxed">
-                    引導師 [你的名字] 已收到您的探索訊號。我將在 48 小時內依據您留下的聯絡資訊回覆您，期待有機會與您一同在「興趣的鏡子」中相遇。
-                </p>
-                <button onclick="closeModal()" class="w-full bg-sand-200 hover:bg-sand-300 text-sand-900 font-semibold py-2 rounded-lg transition text-sm">
-                    關閉視窗
-                </button>
-            </div>
-        </div>
-    </div> -->
 
     <!-- 腳本 -->
     <script>
@@ -1409,6 +1384,56 @@
                 closeModal();
             }
         });
+
+        let galleryIndex = 0;
+        let gallerySlideCount = 0;
+
+        function initGallery() {
+            const track = document.getElementById('gallery-track');
+            const dotsContainer = document.getElementById('gallery-dots');
+            if (!track || !dotsContainer) return;
+
+            gallerySlideCount = track.children.length;
+            dotsContainer.innerHTML = Array.from({ length: gallerySlideCount }, (_, i) =>
+                `<button type="button" onclick="galleryGoTo(${i})" aria-label="第 ${i + 1} 張" class="gallery-dot h-2 rounded-full bg-sand-300 transition-all duration-300 ${i === 0 ? 'active w-5' : 'w-2'}"></button>`
+            ).join('');
+
+            const viewport = document.getElementById('gallery-viewport');
+            let touchStartX = 0;
+            viewport.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+            viewport.addEventListener('touchend', e => {
+                const diff = touchStartX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 50) diff > 0 ? galleryNext() : galleryPrev();
+            }, { passive: true });
+        }
+
+        function updateGallery() {
+            const track = document.getElementById('gallery-track');
+            if (!track) return;
+            track.style.transform = `translateX(-${galleryIndex * 100}%)`;
+            document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === galleryIndex);
+                dot.classList.toggle('w-5', i === galleryIndex);
+                dot.classList.toggle('w-2', i !== galleryIndex);
+            });
+        }
+
+        function galleryGoTo(index) {
+            galleryIndex = index;
+            updateGallery();
+        }
+
+        function galleryPrev() {
+            galleryIndex = (galleryIndex - 1 + gallerySlideCount) % gallerySlideCount;
+            updateGallery();
+        }
+
+        function galleryNext() {
+            galleryIndex = (galleryIndex + 1) % gallerySlideCount;
+            updateGallery();
+        }
+
+        initGallery();
     </script>
 </body>
 </html>
