@@ -288,10 +288,10 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" onclick="galleryPrev()" aria-label="上一張" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 bg-white/90 hover:bg-white text-sage-800 rounded-full shadow-md flex items-center justify-center transition">
+                <button type="button" onclick="event.stopPropagation(); galleryPrev()" aria-label="上一張" class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-white/90 hover:bg-white text-sage-800 rounded-full shadow-md flex items-center justify-center transition">
                     <i data-lucide="chevron-left" class="w-5 h-5"></i>
                 </button>
-                <button type="button" onclick="galleryNext()" aria-label="下一張" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 bg-white/90 hover:bg-white text-sage-800 rounded-full shadow-md flex items-center justify-center transition">
+                <button type="button" onclick="event.stopPropagation(); galleryNext()" aria-label="下一張" class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-white/90 hover:bg-white text-sage-800 rounded-full shadow-md flex items-center justify-center transition">
                     <i data-lucide="chevron-right" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -729,8 +729,8 @@
                 <div class="grid md:grid-cols-3 gap-8 md:gap-10">
                     <!-- 左側 -->
                     <div class="md:col-span-1 text-center flex flex-col items-center">
-                        <div class="w-32 h-32 bg-sage-100 border-4 border-white rounded-full flex items-center justify-center shadow-md mb-4 text-sage-600">
-                            <i data-lucide="binary" class="w-16 h-16"></i>
+                        <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-md ring-2 ring-sage-200/70 mb-4">
+                            <img src="images/image.png" alt="引導師露比吉" class="w-full h-full object-cover object-center">
                         </div>
                         <h3 class="text-xl font-bold text-sand-900">露比吉</h3>
                     </div>
@@ -1353,6 +1353,7 @@
         function openModal() {
             const modal = document.getElementById('bookingModal');
             const container = document.getElementById('modalContainer');
+            if (!modal || !container) return;
             modal.classList.remove('hidden');
             setTimeout(() => {
                 container.classList.remove('scale-95', 'opacity-0');
@@ -1363,6 +1364,7 @@
         function closeModal() {
             const modal = document.getElementById('bookingModal');
             const container = document.getElementById('modalContainer');
+            if (!modal || !container) return;
             container.classList.remove('scale-100', 'opacity-100');
             container.classList.add('scale-95', 'opacity-0');
             setTimeout(() => {
@@ -1379,11 +1381,12 @@
             document.getElementById('successMessage').classList.remove('hidden');
         }
 
-        document.getElementById('bookingModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
+        const bookingModalEl = document.getElementById('bookingModal');
+        if (bookingModalEl) {
+            bookingModalEl.addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        }
 
         let galleryIndex = 0;
         let gallerySlideCount = 0;
@@ -1391,25 +1394,29 @@
         function initGallery() {
             const track = document.getElementById('gallery-track');
             const dotsContainer = document.getElementById('gallery-dots');
-            if (!track || !dotsContainer) return;
+            const viewport = document.getElementById('gallery-viewport');
+            if (!track || !dotsContainer || !viewport) return;
 
             gallerySlideCount = track.children.length;
             dotsContainer.innerHTML = Array.from({ length: gallerySlideCount }, (_, i) =>
                 `<button type="button" onclick="galleryGoTo(${i})" aria-label="第 ${i + 1} 張" class="gallery-dot h-2 rounded-full bg-sand-300 transition-all duration-300 ${i === 0 ? 'active w-5' : 'w-2'}"></button>`
             ).join('');
 
-            const viewport = document.getElementById('gallery-viewport');
             let touchStartX = 0;
             viewport.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
             viewport.addEventListener('touchend', e => {
                 const diff = touchStartX - e.changedTouches[0].screenX;
                 if (Math.abs(diff) > 50) diff > 0 ? galleryNext() : galleryPrev();
             }, { passive: true });
+
+            viewport.addEventListener('click', () => galleryNext());
+            viewport.style.cursor = 'pointer';
+            updateGallery();
         }
 
         function updateGallery() {
             const track = document.getElementById('gallery-track');
-            if (!track) return;
+            if (!track || gallerySlideCount === 0) return;
             track.style.transform = `translateX(-${galleryIndex * 100}%)`;
             document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
                 dot.classList.toggle('active', i === galleryIndex);
@@ -1419,16 +1426,19 @@
         }
 
         function galleryGoTo(index) {
+            if (gallerySlideCount === 0) return;
             galleryIndex = index;
             updateGallery();
         }
 
         function galleryPrev() {
+            if (gallerySlideCount === 0) return;
             galleryIndex = (galleryIndex - 1 + gallerySlideCount) % gallerySlideCount;
             updateGallery();
         }
 
         function galleryNext() {
+            if (gallerySlideCount === 0) return;
             galleryIndex = (galleryIndex + 1) % gallerySlideCount;
             updateGallery();
         }
